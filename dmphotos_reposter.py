@@ -998,7 +998,7 @@ def main():
                     all_candidates.append(cand)
                     active_accounts += 1
 
-                  elif key == PROMO_LATEST_LIST_KEY:
+                elif key == PROMO_LATEST_LIST_KEY:
                 author_items = fetch_author_feed(client, actor, PROMO_FETCH_PER_MEMBER)
                 cand = pick_latest_candidate(
                     author_items,
