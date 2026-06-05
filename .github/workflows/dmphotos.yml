@@ -1,0 +1,61 @@
+name: dmphotos 
+
+on:
+  schedule:
+    - cron: "53 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: dmphotos-state
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install atproto
+
+      - name: Run DMPhotos bot
+        env:
+          BSKY_USERNAME: ${{ secrets.BSKY_USERNAME_DMPHOTOS }}
+          BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD_DMPHOTOS }}
+          STATE_FILE: state_dmphotos.json
+        run: |
+          python dmphotos_reposter.py
+
+      - name: Commit state
+        if: always()
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+          git add state_dmphotos.json
+
+          if git diff --cached --quiet; then
+            echo "No state changes"
+            exit 0
+          fi
+
+          git commit -m "Update DMPhotos state"
+
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push && break
+            echo "Push failed, retry $i..."
+            sleep 5
+          done
