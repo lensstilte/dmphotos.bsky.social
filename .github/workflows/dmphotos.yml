@@ -1,8 +1,7 @@
 name: dmphotos 
 
 on:
-  schedule:
-    - cron: "53 * * * *"
+  
   workflow_dispatch:
 
 concurrency:
