@@ -130,8 +130,8 @@ EXCLUDE_LISTS = {
 
 PROCESS_ORDER = {
     "normal": 1,
-    "promo_latest": 2,
-    "promo_random": 3,
+    "promo_latest": 3,
+    "promo_random": 2,
     "self_random": 4,
 }
 
