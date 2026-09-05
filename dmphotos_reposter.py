@@ -69,7 +69,7 @@ FEEDS = {
 LIJSTEN = {
     "lijst 1": {"link": "https://bsky.app/profile/did:plc:cxrt7ggxkamgzxa47cggtees/lists/3miwepgkt4i2b", "repost accounts": "", "enabled": 1},
     "lijst 2": {"link": "https://bsky.app/profile/did:plc:cxrt7ggxkamgzxa47cggtees/lists/3miweq3f2on2s", "note": "contentcreaters", "enabled": 1},
-    "lijst 3": {"link": "", "note": "", "enabled": 0},
+    "lijst 3": {"link": "https://bsky.app/profile/did:plc:sp54ouue6fp2dlvn2cux54ka/lists/3mr6dvvbgcm2o", "note": "jess", "enabled": 1},
     "lijst 4": {"link": "", "note": "", "enabled": 0},
     "lijst 5": {"link": "", "note": "", "enabled": 0},
     "lijst 6": {"link": "", "note": "", "enabled": 0},
